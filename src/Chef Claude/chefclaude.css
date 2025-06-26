@@ -1,150 +1,204 @@
-.chef-claude-header{
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    color: black;
-    font-family: arial;
-    display: flex;
-    align-items: center;
-    column-gap: 6px;
-    justify-content: center;
-    height: 65px;
-    border-bottom: 2px solid rgba(110, 109, 109, 0.295);
-    box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.10),0px 1px 2px 0px rgba(0,0,0,0.06);
-    background-color: white;
-}
-.chef-claude-icon{
-    height: 40px;
-    margin-bottom: 5px;
-}
-.chef-claude-text{
-    font-size: 22px;
-    font-weight: 600;
-}
-.chef-claude-section{
-    color: black;
-    margin-top: 40px;
-    display: flex;
-    flex-direction: column;
-    font-family: arial;
-    max-width: 600px;
-    margin: auto;
-    margin-top: 30px;
-}
-.form-div{
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-}
-.input-text{
-    margin-top: 40px;
-    display: flex;
-    column-gap: 15px;
-    margin-left: 0px;
-    margin-right: 0px;
-}
-.chef-input{
-    background-color: white;
-    color: black;
-    border: none;
-    padding: 7px;
-    flex: 1;
-    max-width: 560px;
-    min-width: 100px;
-    border-radius: 5px;
-    font-family: arial;
-    font-size: 15px;
-    box-shadow: 0px 0px 1px 2px rgba(0,0,0,0.15);
-    transition: box-shadow 0.15s;
-}
-.chef-input:hover{
-    box-shadow: 0px 0px 5px 3px rgba(0,0,0,0.2);
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.chef-add-button{
-    padding: 10px;
-    width:90px;
-    margin-top: -1px;
-    border-radius: 5px;
-    border: none;
-    background-color: rgb(19, 87, 234);
-    cursor: pointer;
-    color: white;
-    font-family: arial;
-    transition: box-shadow 0.15s;
-    font-weight: bold;
-    font-size: 15px;
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f5fff9;
+  color: #2e3c2b;
+  overflow-x: hidden;
+  position: relative;
 }
-.chef-add-button:hover{
-    box-shadow: 0px 1px 5px 0px rgba(12, 9, 9, 0.9);
+
+/* Leaf Backgrounds */
+.leaf-bg {
+  background-image: url('https://www.transparenttextures.com/patterns/leaf.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: 0.07;
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  z-index: 0;
 }
-.un-list{
-    margin-top: -10px;
-    line-height: 25px;
+
+.top-left {
+  top: -40px;
+  left: -40px;
 }
-.display-section{
-    display: flex;
-    flex-direction: column;
-    margin-left: 10px;
+
+.bottom-right {
+  bottom: -60px;
+  right: -60px;
 }
-.ingredients-head{
-    font-size: 26px;
+
+/* Header */
+header {
+  background: linear-gradient(145deg, #d0f0e0, #f0fff4);
+  text-align: center;
+  padding: 60px 20px 40px;
+  border-bottom: 1px solid #c5e5d5;
+  position: relative;
+  z-index: 1;
 }
-.ready-div{
-    display: flex;
-    align-items: center;
-    line-height: 1;
-    column-gap: 25px;
-    background-color: rgba(180, 179, 179, 0.348);
-    justify-content: center;
-    min-width: 350px;
-    max-width: 520px;
-    border-radius: 15px;
-    max-height: 150px;
-    margin-right: 30px;
-    padding: 10px 15px;
-    margin-top: 10px;
+
+.logo {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #2e7d32;
 }
-.ready-div-text{
-    display: flex;
-    flex-direction: column;
-    line-height: 0;
-    flex: 1;
+
+.logo span {
+  color: #1b5e20;
 }
-.ready-que{
-    font-size: 20px;
+
+.tagline {
+  font-size: 1.1rem;
+  color: #3e5c47;
+  margin-top: 8px;
+  margin-bottom: 30px;
 }
-.ready-para{
-    font-size: 15px;
-    flex: 1;
-    line-height: 1;
+
+/* Form Styling */
+.input-text {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
 }
-.receipe-button{
-    color: white;
-    background-color: rgb(248, 85, 85);
-    padding: 7px 15px;
-    font-size: 15px;
-    border: none;
-    border-radius: 5px;
-    box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.10),0px 1px 2px 0px rgba(0,0,0,0.2);
-    transition: box-shadow 0.15s background-color 0.15s;
-    cursor: pointer;
+
+.chef-input {
+  background-color: #ffffff;
+  color: #2e3c2b;
+  border: 1px solid #a5d6a7;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 16px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  transition: box-shadow 0.2s ease;
 }
-.receipe-button:hover{
-    box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.50),0px 1px 2px 0px rgba(0,0,0,0.2);
-    background-color: rgb(239, 72, 72);
+
+.chef-input:hover {
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
-.receipe-section{
-    font-family: arial;
-    margin-left: 20px;
-    margin-top: 20px;
-    margin-right: 20px;
-    line-height: 28px;
-    font-weight: 500;
+
+.chef-add-button {
+  padding: 12px 20px;
+  border: none;
+  background-color: #00796b;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
 }
-.load{
-    margin-top: 30px;
-    text-align: center;
-    margin-left: -30px;
+
+.chef-add-button:hover {
+  background-color: #004d40;
 }
+
+/* Display Section */
+.display-section {
+  margin: 40px auto;
+  max-width: 700px;
+  padding: 0 20px;
+  text-align: left;
+}
+
+.ingredients-head {
+  font-size: 1.5rem;
+  color: #2e7d32;
+  margin-bottom: 10px;
+  padding-left: 10px;
+}
+
+.un-list {
+  list-style-type: disc;
+  padding-left: 50px;
+  font-size: 1rem;
+  margin: 10px 0 20px;
+  color: #3e5c47;
+}
+
+.un-list li {
+  margin-bottom: 6px;
+  margin-left: 30px;
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+/* Button Wrapper */
+.button-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+/* Find Cure Button */
+.receipe-button {
+  padding: 12px 24px;
+  font-size: 1rem;
+  background-color: #43a047;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.receipe-button:hover {
+  background-color: #2e7d32;
+}
+
+/* Loader */
+.load {
+  margin-top: 30px;
+  text-align: center;
+}
+
+/* Footer */
+
+
+footer {
+  background-color: #e8f5e9;
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+  color: #2e7d32;
+  font-size: 0.9rem;
+}
+
+/* Response Section */
+.receipe-section {
+  margin: 30px 100px;
+  padding: 20px;
+  background-color: #ffffff;
+  border: 1px solid #c8e6c9;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  /* line-height: 1.6; */
+  font-size: 1rem;
+  font-weight: 500;
+  color: #2e3c2b;
+  line-height: 32px;
+}
+
+.ayuh2{
+    margin-bottom: 10px;
+}
+
+.receipe-section ul {
+    padding-left: 50px;
+}
+.receipe-section ol{
+    padding-left: 50px;
+    margin-bottom: 10px;
+}
+

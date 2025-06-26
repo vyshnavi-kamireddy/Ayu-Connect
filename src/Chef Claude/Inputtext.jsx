@@ -1,91 +1,107 @@
-import React from 'react'
-import Receipe from './Receipe';
+import React, { useState, useEffect, useRef } from 'react';
+import { RotatingLines } from 'react-loader-spinner';
 import getRecipeFromMistral from './Ai';
-import { RotatingLines } from 'react-loader-spinner'
+import Receipe from './Receipe';
+import './chefclaude.css';
 
 function Inputtext() {
+  const [ingredient, setIngredient] = useState([]);
+  const [isShown, setIsShown] = useState(false);
+  const [response, setResponse] = useState("");
+  const [load, setLoad] = useState(false);
+  const receipeSection = useRef(null);
 
-  const [ingredient,setIngredient]=React.useState([]);
-  const [isShown,setisShown] = React.useState(false);
-  const [response,setResponse]=React.useState("");
-  const receipeSection=React.useRef(null);
-  const [load,setLoad]=React.useState(false);
-
-  React.useEffect(()=>{
-    if(response!==""&&receipeSection.current!==null)
-    {
-      receipeSection.current.scrollIntoView({behavior:"smooth"});
+  useEffect(() => {
+    if (response !== "" && receipeSection.current !== null) {
+      receipeSection.current.scrollIntoView({ behavior: "smooth" });
     }
-  },[response]);
+  }, [response]);
 
-  const data=ingredient.map((value)=>{
-    return <li key={value}>{value}</li>
-  });
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const newIngredient = formData.get("ingredient");
+    if (newIngredient.trim() !== "") {
+      setIngredient((prev) => [...prev, newIngredient]);
+    }
+    e.target.reset();
+  };
 
-  function addIngredient(formData)
-  {
-    const newIngredient=formData.get("ingredient");
-    setIngredient((prevIngredient)=>{
-      return [...prevIngredient,newIngredient];
-    });
-  }
-
-  function loading()
-  {
+  const triggershown = async () => {
     setLoad(true);
-  }
-
-  async function triggershown()
-  {
-    loading();
-    setisShown((prevShown)=>!prevShown?!prevShown:prevShown);
-    const responsestr=await getRecipeFromMistral(ingredient);
-    setResponse(responsestr);
+    setIsShown(true);
+    const result = await getRecipeFromMistral(ingredient);
+    setResponse(result);
     setLoad(false);
-  }
+  };
 
   return (
+    <div className="page-wrapper">
+      {/* Background Decorations */}
+      <div className="leaf-bg top-left"></div>
+      <div className="leaf-bg bottom-right"></div>
 
+      {/* Header */}
+      <header>
+        <div className="logo">🌿 <span>AyuConnect</span></div>
+        <p className="tagline">Rooted in Nature. Powered by Tradition.</p>
+        <div className="search-container">
+          <form onSubmit={handleSubmit} className="input-text">
+            <input
+              type="text"
+              name="ingredient"
+              placeholder="Search for symptoms (e.g., cold, headache)"
+              className="chef-input"
+              required
+            />
+            <button type="submit" className="chef-add-button">Add</button>
+          </form>
+        </div>
+      </header>
 
-    <div className='form-div'>
+      {/* Main Section */}
+      <main>
+        {ingredient.length > 0 && (
+          <section className="display-section">
+            <h1 className="ingredients-head">Symptoms:</h1>
+            <ul className="un-list">
+              {ingredient.map((value, index) => (
+                <li key={index}>{value}</li>
+              ))}
+            </ul>
 
-      <form action={addIngredient} className='input-text'>
-        <input placeholder='e.g.Yippee Noodles' className='chef-input' name="ingredient" />
-        <button className='chef-add-button'>Add</button>
-      </form>
+            {/* Button only */}
+            <div className="button-wrapper" ref={receipeSection}>
+              <button className="receipe-button" onClick={triggershown}>
+                Find Natural Cure
+              </button>
+            </div>
+          </section>
+        )}
 
-
-      {ingredient.length>0 && <section className='display-section'>
-        <h1 className='ingredients-head'>Ingredients on hand:</h1>
-        <ul className='un-list'>
-          {data}
-        </ul>
-
-        {ingredient.length>3 && <div className='ready-div' ref={receipeSection}>
-          <div className='ready-div-text'>
-            <h2 className='ready-que'>Ready for a recipe?</h2>
-            <p className='ready-para'>Generate a recipe from your list of ingredients.</p>
+        {load && (
+          <div className="load">
+            <RotatingLines
+              visible={true}
+              height="60"
+              width="60"
+              color="#43a047"
+              strokeWidth="4"
+              animationDuration="0.75"
+              ariaLabel="rotating-lines-loading"
+            />
           </div>
-          <button className='receipe-button' onClick={triggershown}>Get a recipe</button>
-        </div>}
+        )}
 
-      </section>}
+        {isShown && <Receipe response={response} />}
+      </main>
 
-      {load  && <div className='load'><RotatingLines
-          visible={true}
-          height="60"
-          width="60"
-          color="#FF0000"
-          strokeWidth="4"
-          animationDuration="0.75"
-          ariaLabel="rotating-lines-loading"
-          wrapperStyle={{}}
-          wrapperClass=""
-      /></div>}
-      {isShown && <Receipe response={response} />}
+      {/* Footer */}
+      <footer>
+        <p>© 2025 AyuConnect — Healing with Nature.</p>
+      </footer>
     </div>
-    
   );
 }
 
-export default Inputtext
+export default Inputtext;

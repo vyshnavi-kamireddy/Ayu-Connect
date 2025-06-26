@@ -5,7 +5,7 @@ function Receipe(props) {
     console.log(props.response);
   return (
     <section className='receipe-section' aria-live='polite'>
-        {props.response?<h2>Chef Claude Recommends:</h2>:null}
+        {props.response?<h2 className='ayuh2'>AyuConnect Recommends:</h2>:null}
         <Markdown>{props.response}</Markdown>
       </section>
   )

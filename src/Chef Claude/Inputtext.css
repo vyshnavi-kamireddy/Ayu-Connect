@@ -1,0 +1,215 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f5fff9;
+  color: #2e3c2b;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Leaf Decorations */
+.leaf-bg {
+  background-image: url('https://www.transparenttextures.com/patterns/leaf.png'); /* You can change to local if needed */
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.2; /* Increased visibility */
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  z-index: 0;
+}
+
+.top-left {
+  top: -30px;
+  left: -30px;
+}
+
+.bottom-right {
+  bottom: -40px;
+  right: -40px;
+}
+
+/* Header */
+header {
+  background: linear-gradient(145deg, #d0f0e0, #f0fff4);
+  text-align: center;
+  padding: 60px 20px 40px;
+  border-bottom: 1px solid #c5e5d5;
+  position: relative;
+  z-index: 1;
+}
+
+.logo {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #2e7d32;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.logo span {
+  color: #1b5e20;
+}
+
+.tagline {
+  font-size: 1.1rem;
+  color: #3e5c47;
+  margin-top: 8px;
+  margin-bottom: 30px;
+}
+
+.search-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  z-index: 1;
+  position: relative;
+}
+
+.search-container input {
+  padding: 14px 16px;
+  width: 360px;
+  max-width: 90%;
+  border: 1px solid #a5d6a7;
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: #ffffff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+.search-container button {
+  padding: 14px 22px;
+  font-size: 1rem;
+  background-color: #00796b;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.search-container button:hover {
+  background-color: #004d40;
+}
+
+/* Main Content */
+main {
+  padding: 50px 20px;
+  max-width: 1000px;
+  margin: auto;
+  position: relative;
+  z-index: 1;
+}
+
+.results-section {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
+}
+
+.ingredients-head {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  color: #2e7d32;
+}
+
+.un-list {
+  list-style-type: disc;
+  padding-left: 20px;
+  font-size: 1rem;
+  color: #3e5c47;
+}
+
+/* Ready for Recipe */
+.ready-div {
+  background-color: #f0fff4;
+  padding: 20px;
+  border: 1px solid #c5e5d5;
+  border-radius: 12px;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.ready-que {
+  color: #1b5e20;
+  font-size: 1.3rem;
+  margin-bottom: 5px;
+}
+
+.ready-para {
+  font-size: 0.95rem;
+  margin-bottom: 15px;
+  color: #4e6655;
+}
+
+.receipe-button {
+  padding: 12px 24px;
+  font-size: 1rem;
+  background-color: #00796b;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.receipe-button:hover {
+  background-color: #004d40;
+}
+
+/* Loader */
+.load {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+/* Remedy Cards */
+.remedy-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  border: 1px solid #d0f0e0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.remedy-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+}
+
+.remedy-card h3 {
+  margin-bottom: 10px;
+  color: #00695c;
+}
+
+.remedy-card p {
+  margin-bottom: 10px;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+.remedy-card em {
+  font-size: 0.85rem;
+  color: #777;
+}
+
+/* Footer */
+footer {
+  background-color: #e8f5e9;
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+  color: #2e7d32;
+  font-size: 0.9rem;
+}
