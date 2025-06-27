@@ -48,10 +48,7 @@ export default async function getRecipeFromMistral(ingredientsArr) {
 
   try {
     const response = await fetch(
-      "https://corsproxy.io/?" +
-        encodeURIComponent(
-          "https://api-inference.huggingface.co/v1/chat/completions"
-        ),
+      "https://thingproxy.freeboard.io/fetch/https://api-inference.huggingface.co/v1/chat/completions",
       {
         method: "POST",
         headers: {
