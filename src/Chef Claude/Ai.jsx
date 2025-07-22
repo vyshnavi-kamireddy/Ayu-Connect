@@ -1,7 +1,5 @@
-import { HfInference} from "@huggingface/inference"
-
-const SYSTEM_PROMPT = `
-You are an assistant that receives a list of symptoms or health concerns from a user and suggests a traditional remedy they could try using some or all of the symptoms they mentioned. You don't need to match every symptom exactly. The remedy can include commonly known ingredients, but try to keep additional ingredients minimal and easily available at home. Format your response in markdown, and make sure to highlight instructions and ingredients using bold text to make it easier to display on a web page.
+const SYSTEM_PROMPT = 
+`You are an assistant that receives a list of symptoms or health concerns from a user and suggests a traditional remedy they could try using some or all of the symptoms they mentioned. You don't need to match every symptom exactly. The remedy can include commonly known ingredients, but try to keep additional ingredients minimal and easily available at home. Format your response in markdown, and make sure to highlight instructions and ingredients using bold text to make it easier to display on a web page.
 
 Also, include:
 
@@ -40,27 +38,42 @@ Remove from heat, cool slightly, and add honey.
 
 Drink warm before bed.
 
-⚠️ Precaution: Do not use if allergic to dairy or turmeric. Consult a doctor if symptoms persist beyond 3 days.
-`
+⚠️ Precaution: Do not use if allergic to dairy or turmeric. Consult a doctor if symptoms persist beyond 3 days.`
 
-const HF_ACCESS_TOKEN = import.meta.env.VITE_HF_ACCESS_TOKEN;
+const getRecipeFromMistral = async (input) => {
+  try {
+    const res = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${import.meta.env.VITE_OPENROUTER_API_KEY}`,
+        "Content-Type": "application/json",
+        "HTTP-Referer": "https://your-site.com", // optional
+      },
+      body: JSON.stringify({
+        model: "mistralai/mistral-7b-instruct",
+        messages: [
+          {
+            role: "system",
+            content: SYSTEM_PROMPT,
+          },
+          {
+            role: "user",
+            content: `My symptoms are: ${input}. Suggest a traditional home remedy.`,
+          },
+        ],
+        temperature: 0.7,
+        max_tokens: 700,
+      }),
+    });
 
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error?.message || "Fetch failed");
 
-const hf = new HfInference(HF_ACCESS_TOKEN)
+    return data.choices?.[0]?.message?.content || "No response from model.";
+  } catch (err) {
+    console.error("Fetch error:", err);
+    return "⚠️ Error fetching remedy: " + err.message;
+  }
+};
 
-export default async function getRecipeFromMistral(ingredientsArr) {
-    const ingredientsString = ingredientsArr.join(", ")
-    try {
-        const response = await hf.chatCompletion({
-            model: "HuggingFaceH4/zephyr-7b-beta",
-            messages: [
-                { role: "system", content: SYSTEM_PROMPT },
-                { role: "user", content: `I have ${ingredientsString}. Please give me a recipe you'd recommend I make!` },
-            ],
-            max_tokens: 1024,
-        })
-        return response.choices[0].message.content
-    } catch (err) {
-        console.error(err.message)
-    }
-}
+export default getRecipeFromMistral;
