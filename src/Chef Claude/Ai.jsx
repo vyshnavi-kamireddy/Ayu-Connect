@@ -18,13 +18,16 @@ Example Output Format:
 
 📝 Ingredients:
 
-1 cup milk
+📝 Ingredients:
 
-1/2 tsp turmeric powder
+- 1 cup milk
 
-A pinch of black pepper
+- 1/2 tsp turmeric powder
 
-(Optional) 1 tsp honey
+- A pinch of black pepper
+
+- (Optional) 1 tsp honey
+
 
 👣 Instructions:
 
