@@ -47,19 +47,20 @@
 
 📌 **Home Page / Initial View**  
 
-![Home View](#)  
+![Home View](https://github.com/vyshnavi-kamireddy/Ayu-Connect/blob/main/Screenshot%202025-06-27%20025726.png)  
 
 ---
 
 📌 **Search & Remedies**  
 
-![Search & Remedies](#)  
+![Search & Remedies](https://github.com/vyshnavi-kamireddy/Ayu-Connect/blob/main/Screenshot%202025-06-27%20025737.png)  
 
 ---
 
 📌 **Remedy Details / Instructions**  
 
-![Remedy Details](#)  
+![Remedy Details](https://github.com/vyshnavi-kamireddy/Ayu-Connect/blob/main/Screenshot%202025-06-27%20025758.png) 
+![Remedy Details](https://github.com/vyshnavi-kamireddy/Ayu-Connect/blob/main/Screenshot%202025-06-27%20025758.png)  
 
 ---
 
