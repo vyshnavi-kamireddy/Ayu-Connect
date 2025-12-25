@@ -59,8 +59,8 @@
 
 📌 **Remedy Details / Instructions**  
 
-![Remedy Details](https://github.com/vyshnavi-kamireddy/Ayu-Connect/blob/main/Screenshot%202025-06-27%20025758.png)(https://github.com/vyshnavi-kamireddy/Ayu-Connect/blob/main/Screenshot%202025-06-27%20025808.png)
-
+![Remedy Details](https://github.com/vyshnavi-kamireddy/Ayu-Connect/blob/main/Screenshot%202025-06-27%20025758.png)
+![Remedy Details](https://github.com/vyshnavi-kamireddy/Ayu-Connect/blob/main/Screenshot%202025-06-27%20025808.png)
 ---
 
 ## 🙌 Thank You!
