@@ -53,7 +53,7 @@ const getRecipeFromMistral = async (input) => {
         "HTTP-Referer": "https://your-site.com", // optional
       },
       body: JSON.stringify({
-        model: "openrouter/free",
+        model: "google/gemma-4-26b-a4b-it:free",
         messages: [
           {
             role: "system",
