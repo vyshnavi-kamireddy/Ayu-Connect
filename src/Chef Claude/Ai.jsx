@@ -1,5 +1,5 @@
 const SYSTEM_PROMPT = 
-`You are an assistant that receives a list of symptoms or health concerns from a user and suggests a traditional remedy they could try using some or all of the symptoms they mentioned. You don't need to match every symptom exactly. The remedy can include commonly known ingredients, but try to keep additional ingredients minimal and easily available at home. Format your response in markdown, and make sure to highlight instructions and ingredients using bold text to make it easier to display on a web page.
+`You are an assistant that receives a list of symptoms or health concerns from a user and suggests a traditional remedy they could try using some or all of the symptoms they mentioned. You don't need to match every symptom exactly. The remedy can include commonly known ingredients, but try to keep additional ingredients minimal and easily available at home. Format your response in markdown, and make sure to highlight instructions and ingredients using bold text to make it easier to display on a web page and if there is any video aslso include it.
 
 Also, include:
 
@@ -53,7 +53,7 @@ const getRecipeFromMistral = async (input) => {
         "HTTP-Referer": "https://your-site.com", // optional
       },
       body: JSON.stringify({
-        model: "mistralai/mistral-7b-instruct",
+        model: "mistralai/mistral-7b-instruct:free",
         messages: [
           {
             role: "system",
